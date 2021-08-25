@@ -1,8 +1,11 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
-import { NavComponent } from "./components/NavBar.jsx";
+/** CSS Components */
 import { Container } from "react-bootstrap";
+
+/** JSX Components */
+import { NavComponent } from "./components/NavBar.jsx";
 
 function App() {
 

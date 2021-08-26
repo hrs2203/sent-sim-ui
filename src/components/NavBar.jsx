@@ -15,8 +15,8 @@ const NavComponent = () => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                        <Nav.Link
-                        >{login ? "Logged in" : "Login"}</Nav.Link>
+                        {/* <Nav.Link
+                        >{login ? "Logged in" : "Login"}</Nav.Link> */}
                         <Nav.Link >{page}</Nav.Link>
                     </Nav>
                     <Nav>
@@ -27,6 +27,10 @@ const NavComponent = () => {
                             <NavDropdown.Item onClick={
                                 () => dispatchAction(changePage("BoolFlip"))
                             } >Page 2</NavDropdown.Item>
+                            <NavDropdown.Divider />
+                            <NavDropdown.Item onClick={
+                                () => dispatchAction(changePage("Authentication"))
+                            } >Authentication</NavDropdown.Item>
                             <NavDropdown.Divider />
                             <NavDropdown.Item onClick={
                                 () => dispatchAction(changePage("All"))

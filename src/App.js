@@ -19,7 +19,7 @@ const BodyComponent = () => {
     <>
       <NavComponent />
       <Container>
-        <hr />
+        < br />
         { getPage(pageName) }
       </Container>
     </>

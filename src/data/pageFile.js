@@ -7,7 +7,6 @@ const PageSlice = createSlice({
     },
     reducers: {
         changePage: (state, action) => {
-            console.log(action);
             state.value = action.payload;
         }
     }

@@ -3,7 +3,7 @@ import { changePage } from "../data/pageFile";
 import { useDispatch, useSelector } from 'react-redux';
 
 
-export function NavComponent() {
+const NavComponent = () => {
     const page = useSelector(state => state.page.value);
     const dispatchAction = useDispatch();
 
@@ -36,3 +36,5 @@ export function NavComponent() {
         </Navbar>
     )
 }
+
+export default NavComponent;

@@ -1,6 +1,12 @@
 import { Container, Navbar, Nav, NavDropdown } from "react-bootstrap";
+import { changePage } from "../data/pageFile";
+import { useDispatch, useSelector } from 'react-redux';
+
 
 export function NavComponent() {
+    const page = useSelector(state => state.page.value);
+    const dispatchAction = useDispatch();
+
     return (
         <Navbar bg="light">
             <Container>
@@ -9,15 +15,20 @@ export function NavComponent() {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
                         <Nav.Link href="#home">Login</Nav.Link>
-                        <Nav.Link href="#link">About</Nav.Link>
+                        <Nav.Link href="#link">{page}</Nav.Link>
                     </Nav>
                     <Nav>
                         <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                            <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+                            <NavDropdown.Item onClick={
+                                () => dispatchAction(changePage(0))
+                            } >Page 1</NavDropdown.Item>
+                            <NavDropdown.Item onClick={
+                                () => dispatchAction(changePage(1))
+                            } >Page 2</NavDropdown.Item>
                             <NavDropdown.Divider />
-                            <NavDropdown.Item href="#action/3.4">Details About Product</NavDropdown.Item>
+                            <NavDropdown.Item onClick={
+                                () => dispatchAction(changePage(2))
+                            } >All Page</NavDropdown.Item>
                         </NavDropdown>
                     </Nav>
                 </Navbar.Collapse>

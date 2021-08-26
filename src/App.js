@@ -11,16 +11,16 @@ import { Container } from "react-bootstrap";
 import NavComponent from "./components/NavBar.jsx";
 
 /** Static data points */
-import { pageCounter } from './data/staticContent';
+import { getPage } from './data/staticContent';
 
 const BodyComponent = () => {
-  const page = useSelector(state => state.page.value);
+  const pageName = useSelector(state => state.page.value);
   return (
     <>
       <NavComponent />
       <Container>
         <hr />
-        { pageCounter[page] }
+        { getPage(pageName) }
       </Container>
     </>
   )

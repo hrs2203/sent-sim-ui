@@ -10,9 +10,8 @@ const LoginForm = () => {
 
     const handelUserNameChange = (e) => { setUserName(e.target.value); }
     const handelPasswordChange = (e) => { setpassword(e.target.value); }
-    const loginFunction = async () =>  {
+    const loginFunction = async () => {
         const loginResponse = await login_user_api(userName, password);
-        console.log(loginResponse);
         dispatchAction(login_user(loginResponse));
     }
 
@@ -30,6 +29,19 @@ const LoginForm = () => {
 
 }
 
+const UserPreview = ({ userdata }) => {
+    if (userdata === undefined) {
+        return <div> User Not logged in </div>
+    }
+    return (
+        <div>
+            userName: {userdata['username']}
+            <br />
+            email: {userdata['email']}
+        </div>
+    )
+}
+
 const Authentication = () => {
     const userDetail = useSelector(state => state.userDetail.value);
     const dispatchAction = useDispatch();
@@ -38,13 +50,13 @@ const Authentication = () => {
         return (
             <div>
                 <LoginForm />
-
+                <UserPreview userdata={userDetail} />
             </div>
         )
     } else {
         return (
             <div>
-                userObj  : {JSON.stringify(userDetail)}
+                <UserPreview userdata={userDetail} />
                 <br />
                 <button onClick={() => {
                     dispatchAction(logout_user());

@@ -5,7 +5,7 @@ import { changePage } from "../data/pageFile";
 
 const NavComponent = () => {
     const page = useSelector(state => state.page.value);
-    const login = useSelector(state => state.boolRed.value);
+    const userData = useSelector(state => state.userDetail.value);
     const dispatchAction = useDispatch();
 
     return (
@@ -15,8 +15,9 @@ const NavComponent = () => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                        {/* <Nav.Link
-                        >{login ? "Logged in" : "Login"}</Nav.Link> */}
+                        <Nav.Link>{
+                            userData === undefined ? "Login" : userData["username"]
+                        }</Nav.Link>
                         <Nav.Link >{page}</Nav.Link>
                     </Nav>
                     <Nav>

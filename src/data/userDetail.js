@@ -10,7 +10,7 @@ const userDetail = createSlice({
             state.value = action.payload;
         },
         logout_user : (state) => {
-            state.value = undefined
+            state.value = undefined;
         }
     }
 })

@@ -70,7 +70,7 @@ const MainPage = () => {
 					</div>
 				</nav>
 			</header>
-			<div className="container">
+			<div className="p-2">
 				{pageList[pageName]({ setUser: setUser, setPageName: setPageName, user: JSON.stringify(user) })}
 			</div>
 		</div>

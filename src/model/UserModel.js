@@ -1,3 +1,5 @@
+import _ from "lodash"
+
 const STORAGE_USER = 'STORAGE_USER'
 
 const USER_GET = "USER_GET"
@@ -6,8 +8,10 @@ const USER_LOGOUT = "USER_LOGOUT"
 
 export const USER_ACTION = { USER_GET, USER_UPDATE, USER_LOGOUT };
 
+const DUMMY_USER = { "isLoggedIn": false }
+
 export const initial_user = () => {
-	const userData = localStorage.getItem(STORAGE_USER) || "{}"
+	const userData = localStorage.getItem(STORAGE_USER) || JSON.stringify(DUMMY_USER)
 	return JSON.parse(userData)
 }
 

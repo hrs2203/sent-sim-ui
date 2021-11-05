@@ -15,7 +15,7 @@ export default function LoginPage() {
 		dispatch({
 			type: ACTION_SET.USER_ACTION.USER_UPDATE,
 			payload: {
-				"name": "hrishabh", "type": "too much worked up", "count": count
+				"name": "hrishabh", "isLoggedIn": true, "count": count
 			}
 		})
 	}

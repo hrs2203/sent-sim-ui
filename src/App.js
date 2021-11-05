@@ -1,6 +1,7 @@
-import MainPage from "./components/MainPage";
+import HomePage from "./components/HomePage"
 
-
-const App = () => <MainPage />
-
-export default App;
+export default function App() {
+	return (
+		<HomePage />
+	)
+}

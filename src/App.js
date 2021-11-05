@@ -4,16 +4,27 @@ import RegisterPage from "./components/RegisterPage";
 
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Provider } from "react-redux";
 
-export default function App() {
+import store from "./model"
+
+function RouteHandeller() {
 	return (
 		<BrowserRouter>
 			<Routes>
-				<Route path="/" element={ <HomePage /> } />
-				<Route path="/login" element={ <LoginPage /> } />
-				<Route path="/register" element={ <RegisterPage /> } />
-				<Route path="*" element={ <div>404 Nothing found :| </div> } />
+				<Route path="/" element={<HomePage />} />
+				<Route path="/login" element={<LoginPage />} />
+				<Route path="/register" element={<RegisterPage />} />
+				<Route path="*" element={<div>404 Nothing found :| </div>} />
 			</Routes>
 		</BrowserRouter>
+	)
+}
+
+export default function App() {
+	return (
+		<Provider store={store}>
+			<RouteHandeller />
+		</Provider>
 	)
 }

@@ -4,28 +4,41 @@ import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 
 
+
 import { ACTION_SET } from "../model";
 import { loginUser } from "../services/userAPI";
+import Header from "./Header";
+import { navigateTo } from "../util/navigation";
 
 export default function LoginPage() {
 	const dispatch = useDispatch();
-	const { userDetail } = useSelector((state) => {
-		return { userDetail: _.get(state, ["UserReducer"], { "404": "noting found" }) }
-	})
 
 	const [email, setEmail] = useState("")
 	const [password, setPassword] = useState("")
 
-
 	const _loginUser = async (e) => {
 		e.preventDefault()
-		console.log(email, password);
+		dispatch({
+			type: ACTION_SET.WORLD_ACTION.WORLD_TOGGLE
+		})
 		const login_api = await loginUser(email, password);
-		console.log(login_api);
+		const user_data = login_api.data.data;
+		setTimeout(() => {
+			dispatch({
+				type: ACTION_SET.WORLD_ACTION.WORLD_TOGGLE
+			})
+			dispatch({
+				type: ACTION_SET.USER_ACTION.USER_UPDATE,
+				payload: { isLoggedIn: true, userDetail: user_data }
+			})
+			navigateTo("/user")
+		}, 500);
+
 	}
 
 	return (
 		<div>
+			<Header />
 			<div className="grid grid-cols-2 mx-5 my-3">
 				<div className=""></div>
 				<div className="pt-2 p-4">

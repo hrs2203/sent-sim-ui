@@ -1,5 +1,3 @@
-import _ from "lodash"
-
 const STORAGE_USER = 'STORAGE_USER'
 
 const USER_GET = "USER_GET"
@@ -8,7 +6,7 @@ const USER_LOGOUT = "USER_LOGOUT"
 
 export const USER_ACTION = { USER_GET, USER_UPDATE, USER_LOGOUT };
 
-const DUMMY_USER = { "isLoggedIn": false }
+const DUMMY_USER = { "isLoggedIn": false, "userDetail": {} }
 
 export const initial_user = () => {
 	const userData = localStorage.getItem(STORAGE_USER) || JSON.stringify(DUMMY_USER)
@@ -19,7 +17,7 @@ export function UserReducer(state = initial_user(), action = {}) {
 	const { type, payload } = action;
 
 	if (type === USER_LOGOUT) {
-		localStorage.removeItem(STORAGE_USER)
+		localStorage.clear()
 	} else {
 		localStorage.setItem(
 			STORAGE_USER, JSON.stringify({ ...state, ...payload })
@@ -32,7 +30,7 @@ export function UserReducer(state = initial_user(), action = {}) {
 		case USER_UPDATE:
 			return { ...state, ...payload }
 		case USER_LOGOUT:
-			return {}
+			return DUMMY_USER
 		default:
 			return { ...state }
 	}

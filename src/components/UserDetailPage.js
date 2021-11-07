@@ -1,5 +1,13 @@
+import Header from "./Header";
+
+
 export default function UserDetailPage(){
     return (
-        <div>UserDetailPage</div>
+        <div>
+            <Header />
+            <div>
+                
+            </div>
+        </div>
     )
 }

@@ -11,13 +11,10 @@ export default function Header() {
 		isLoading: _.get(state, ["WorldReducer", "isLoading"], false)
 	}))
 
-	const item_style = "mx-2 my-1 px-2 item-center"
+	const item_style = "mx-2 my-2 px-2 w-40 item-center custom_nav_button"
 
 	return (
-		<nav className="bg-blue-200 h-10 flex justify-end">
-			<div className={item_style}>
-				{isLoading ? "...Loading" : ""}
-			</div>
+		<nav className="custom_nav h-10 flex justify-center content-center">
 			<Link to="/">
 				<button className={item_style}>HomePage</button>
 			</Link>

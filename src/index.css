@@ -2,3 +2,45 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Nav Css */
+
+.custom_nav{
+    background-color: rgba(216, 190, 242, 1);
+}
+
+.custom_nav_button{
+    background-color: rgba(234, 214, 255, 1);
+}
+
+.custom_form_auth{
+    width: 1000px;
+}
+
+.low_border{
+    border: 1px solid rgba(232, 232, 232, 1);
+    border-radius: 15px;
+}
+
+.userDetail{
+    width: 700px;
+    min-height: 200px;
+    padding: 15px;
+}
+
+.userHistory{
+    width: 1000px;
+    min-height: 200px;
+    padding: 15px;
+}
+
+.circleShow{
+    height: 150px;
+    width: 150px;
+    /* border-radius: 150px; */
+}
+
+.sideDiv{
+    width: 500px;
+    height: 150px;
+}

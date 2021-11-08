@@ -1,6 +1,5 @@
-import _ from "lodash";
 import { Link } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useState } from "react";
 
 
@@ -39,49 +38,48 @@ export default function LoginPage() {
 	return (
 		<div>
 			<Header />
-			<div className="grid grid-cols-2 mx-5 my-3">
-				<div className=""></div>
-				<div className="pt-2 p-4">
-					<form>
-						<div className="grid grid-cols-1 gap-3">
-							<div>
-								<label className="font-poppins">Your Email</label>
+			<div className="mx-5 my-3 flex justify-center">
+				<div className="pt-2 p-4 custom_form_auth low_border">
+
+					<div className="grid grid-cols-1 gap-3">
+						<div>
+							<label className="font-poppins">Your Email</label>
+							<input
+								autoFocus
+								id="email"
+								type="email"
+								placeholder="Enter your email here"
+								className="shadow-sm appearance-none border rounded w-full py-2 px-3 mt-1 text-gray-700 leading-tight focus:outline-none focus:shadow-outline font-poppins"
+								value={email}
+								onChange={(e) => { setEmail(e.target.value) }}
+							/>
+						</div>
+						<div>
+							<label className="font-poppins mt-4">Password</label>
+							<div className="relative">
 								<input
-									autoFocus
-									id="email"
-									type="email"
-									placeholder="Enter your email here"
+									id="password"
+									type="password"
+									placeholder="Your Password"
 									className="shadow-sm appearance-none border rounded w-full py-2 px-3 mt-1 text-gray-700 leading-tight focus:outline-none focus:shadow-outline font-poppins"
-									value={email}
-									onChange={(e) => { setEmail(e.target.value) }}
+									value={password}
+									onChange={(e) => { setPassword(e.target.value) }}
 								/>
 							</div>
-							<div>
-								<label className="font-poppins mt-4">Password</label>
-								<div className="relative">
-									<input
-										id="password"
-										type="password"
-										placeholder="Your Password"
-										className="shadow-sm appearance-none border rounded w-full py-2 px-3 mt-1 text-gray-700 leading-tight focus:outline-none focus:shadow-outline font-poppins"
-										value={password}
-										onChange={(e) => { setPassword(e.target.value) }}
-									/>
-								</div>
-							</div>
+						</div>
+						<div className="flex">
 							<button
 								className="mt-6 bg-success p-2 px-4 text-18px font-poppins rounded text-white"
 								onClick={_loginUser}
-							>
-								Login
-							</button>
+							> Login </button>
+							<Link to="/register">
+								<button className="mt-6 bg-red p-2 px-4 text-18px font-poppins rounded hover:bg-hoverRed focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-opacity-50 w-full ">
+									Signup for free
+								</button>
+							</Link>
 						</div>
-					</form>
-					<Link to="/register">
-						<button className="mt-6 bg-red p-2 px-4 text-18px font-poppins rounded hover:bg-hoverRed focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-opacity-50 w-full ">
-							Signup for free
-						</button>
-					</Link>
+					</div>
+
 				</div>
 			</div>
 		</div>

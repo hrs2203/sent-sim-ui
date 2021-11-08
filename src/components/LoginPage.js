@@ -22,16 +22,19 @@ export default function LoginPage() {
 		})
 		const login_api = await loginUser(email, password);
 		const user_data = login_api.data.data;
-		setTimeout(() => {
-			dispatch({
-				type: ACTION_SET.WORLD_ACTION.WORLD_TOGGLE
-			})
-			dispatch({
-				type: ACTION_SET.USER_ACTION.USER_UPDATE,
-				payload: { isLoggedIn: true, userDetail: user_data }
-			})
-			navigateTo("/user")
-		}, 500);
+		if ( login_api.data.status === 200 ){
+			setTimeout(() => {
+				dispatch({
+					type: ACTION_SET.WORLD_ACTION.WORLD_TOGGLE
+				})
+				dispatch({
+					type: ACTION_SET.USER_ACTION.USER_UPDATE,
+					payload: { isLoggedIn: true, userDetail: user_data }
+				})
+				navigateTo("/user")
+			}, 500);
+		}
+		
 
 	}
 

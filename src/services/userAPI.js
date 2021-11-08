@@ -10,3 +10,22 @@ export async function loginUser(email, password) {
 	})
 	return resp
 }
+
+export async function getUserDetails(id) {
+	const resp = await server_api.get(`/userhistory?pk=${id}`)
+	return resp;
+}
+
+export async function addCredit(id, amt) {
+	const resp = await server_api.get(`add_credit/${id}/${amt}`)
+	return true
+}
+
+export async function sentenceList(hid) {
+	const resp = await server_api.get(`history_sentences?hid=${hid}`);
+	const r = resp.data.data
+	if (Object.getPrototypeOf(r) === Object.getPrototypeOf([]))
+		return r;
+	return []
+}
+

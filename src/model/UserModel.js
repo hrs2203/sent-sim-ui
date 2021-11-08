@@ -6,7 +6,7 @@ const USER_LOGOUT = "USER_LOGOUT"
 
 export const USER_ACTION = { USER_GET, USER_UPDATE, USER_LOGOUT };
 
-const DUMMY_USER = { "isLoggedIn": false, "userDetail": {} }
+const DUMMY_USER = { "isLoggedIn": false, "userDetail": {}, "userCompleteDetail": {} }
 
 export const initial_user = () => {
 	const userData = localStorage.getItem(STORAGE_USER) || JSON.stringify(DUMMY_USER)

@@ -2,6 +2,7 @@ import HomePage from "./components/HomePage";
 import LoginPage from "./components/LoginPage";
 import RegisterPage from "./components/RegisterPage";
 import UserDetailPage from "./components/UserDetailPage";
+import ComparePage from "./components/ComparePage";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Provider } from "react-redux";
@@ -16,6 +17,7 @@ function RouteHandeller() {
 				<Route path="/login" element={<LoginPage />} />
 				<Route path="/register" element={<RegisterPage />} />
 				<Route path="/user" element={<UserDetailPage />} />
+				<Route path="/ComparisionPage" element={<ComparePage />} />
 				<Route path="*" element={<div>404 Nothing found :| </div>} />
 			</Routes>
 		</BrowserRouter>

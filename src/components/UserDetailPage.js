@@ -32,7 +32,6 @@ export default function UserDetailPage() {
 		user_history: _.get(state, ["UserReducer", "userCompleteDetail", "user_history"], []),
 	}))
 
-	// sa,[;e]
 	async function _getUserHistory() {
 		const user_data = await getUserDetails(id);
 		dispatch({

@@ -1,11 +1,19 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { compareSentences, formatData } from "../services/compareAPI";
+import { compareSentences, formatData, getUserSavedData } from "../services/compareAPI";
 import _ from "lodash"
 import Header from "./Header";
 import { downloadFile } from "../util/navigation";
 
-function SentenceInserter({ sentences, set_sentencs, sid }) {
+function SentenceInserter({ sentences, set_sentencs, sid, uid }) {
+
+	async function _loadUserData(e) {
+		e.preventDefault();
+		const data = await getUserSavedData(uid);
+		console.log(data);
+		set_sentencs([...sentences, ...data]);
+	}
+
 	return (
 		<div>
 			<div className="w-100">
@@ -31,11 +39,10 @@ function SentenceInserter({ sentences, set_sentencs, sid }) {
 					})
 				}
 			</div>
-			<button
-				className="w-100"
-				onClick={() => {
-					set_sentencs([...sentences, ""])
-				}}>Add New Sentence</button>
+			<button className="my-3" onClick={() => { set_sentencs([...sentences, ""]) }}>Add New Sentence</button>
+			<br />
+			<button className="my-3" onClick={_loadUserData}>Load User Data</button>
+
 			<input className="w-100" type="file" id={`${sid}_file`}
 				onChange={async (e) => {
 					const file_up = e.target.files[0];
@@ -84,10 +91,10 @@ export default function ComparePage() {
 			<Header />
 			<div className="flex px-10 py-4 justify-around overflow-x-auto">
 				<div className="low_border inputMainBox px-4 py-2">
-					<SentenceInserter sentences={left_sent} set_sentencs={setLeft_sent} sid={"left"} />
+					<SentenceInserter sentences={left_sent} set_sentencs={setLeft_sent} sid={"left"} uid={id} />
 				</div>
 				<div className="low_border inputMainBox px-4 py-2">
-					<SentenceInserter sentences={right_sent} set_sentencs={setRight_sent} sid={"right"} />
+					<SentenceInserter sentences={right_sent} set_sentencs={setRight_sent} sid={"right"} uid={id} />
 				</div>
 			</div>
 			<div className="px-32">

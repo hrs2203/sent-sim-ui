@@ -11,6 +11,13 @@ export async function loginUser(email, password) {
 	return resp
 }
 
+export async function registerUser(username, email, password) {
+	const resp = await server_api.post("register", {
+		"username": username, "email": email, "password": password
+	})
+	return resp
+}
+
 export async function getUserDetails(id) {
 	const resp = await server_api.get(`/userhistory?pk=${id}`)
 	return resp;

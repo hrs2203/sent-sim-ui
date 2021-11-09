@@ -34,8 +34,6 @@ export default function LoginPage() {
 				navigateTo("/user")
 			}, 500);
 		}
-		
-
 	}
 
 	return (

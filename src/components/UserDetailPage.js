@@ -5,6 +5,7 @@ import _ from "lodash"
 import { getUserDetails, addCredit, sentenceList } from "../services/userAPI";
 import { ACTION_SET } from "../model";
 import { useEffect } from "react";
+import { uploadUserFile } from "../services/compareAPI";
 
 
 function TabelRow({ comp_type, transaction_charge, query_count, credit_added, id, showCompHistory }) {
@@ -58,6 +59,19 @@ export default function UserDetailPage() {
 		console.log("==========================");
 	}
 
+	async function _uploadUserFile(e) {
+		const file_up = e.target.files[0];
+		if (file_up.type === "application/json") {
+			const c = await file_up.text()
+			const content = JSON.parse(c);
+			const data = content.sentences;
+			const t = await uploadUserFile(id, data);
+			alert(t ? "uploaded file succesfully" : "some error happend, please check file format");
+		} else {
+			alert("invalid file type. Only json allowed. Please read the format.")
+		}
+		e.target.value = ""
+	}
 
 
 	useEffect(() => {
@@ -98,7 +112,7 @@ export default function UserDetailPage() {
 					</div>
 					<div className="low_border p-2 mx-1 mb-2 flex">
 						<input type="file"
-							onClick={() => { }}
+							onChange={_uploadUserFile}
 							id="upload_user_file"
 						/>
 					</div>

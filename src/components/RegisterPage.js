@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { useState } from "react";
 
 import { ACTION_SET } from "../model";
-import { } from "../services/userAPI";
+import { registerUser } from "../services/userAPI";
 import Header from "./Header";
 import { navigateTo } from "../util/navigation";
 
@@ -16,7 +16,24 @@ export default function RegistryPage() {
 	const [password, setPassword] = useState("")
 
 	const _registerUser = async (e) => {
-
+		e.preventDefault()
+		dispatch({
+			type: ACTION_SET.WORLD_ACTION.WORLD_TOGGLE
+		})
+		const regiter_api = await registerUser(UserName, email, password);
+		const user_data = regiter_api.data.data;
+		if (regiter_api.data.status === 200) {
+			setTimeout(() => {
+				dispatch({
+					type: ACTION_SET.WORLD_ACTION.WORLD_TOGGLE
+				})
+				dispatch({
+					type: ACTION_SET.USER_ACTION.USER_UPDATE,
+					payload: { isLoggedIn: true, userDetail: user_data }
+				})
+				navigateTo("/user")
+			}, 500);
+		}
 	}
 
 	return (

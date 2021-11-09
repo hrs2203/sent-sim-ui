@@ -6,9 +6,8 @@ import { navigateTo } from "../util/navigation";
 
 export default function Header() {
 	const dispatch = useDispatch();
-	const { isLoggedIn, isLoading } = useSelector(state => Object({
+	const { isLoggedIn } = useSelector(state => Object({
 		isLoggedIn: _.get(state, ["UserReducer", "isLoggedIn"], false),
-		isLoading: _.get(state, ["WorldReducer", "isLoading"], false)
 	}))
 
 	const item_style = "mx-2 my-2 px-2 w-40 item-center custom_nav_button"

@@ -7,15 +7,6 @@ import { ACTION_SET } from "../model";
 import { useEffect } from "react";
 
 
-function PopUpView() {
-	return (
-		<div className="detail_box">
-			123
-		</div>
-	)
-}
-
-
 function TabelRow({ comp_type, transaction_charge, query_count, credit_added, id, showCompHistory }) {
 	return (
 		<tr>
@@ -105,15 +96,21 @@ export default function UserDetailPage() {
 							onChange={(e) => { setAmt(e.target.value) }} />
 						<button onClick={_addMoney}>Add Amount</button>
 					</div>
+					<div className="low_border p-2 mx-1 mb-2 flex">
+						<input type="file"
+							onClick={() => { }}
+							id="upload_user_file"
+						/>
+					</div>
 					{
 						show_history ? (
 							<div className="low_border p-4 mx-1 mb-2">
 								<div className="mb-2">Sentences</div>
-								<hr/>
+								<hr />
 								<ol className="mt-1">
 									{
 										sentence_list.map((item, indx) => {
-											return <li className="my-1">{indx+1}. {item["sentence"]}</li>
+											return <li className="my-1">{indx + 1}. {item["sentence"]}</li>
 										})
 									}
 								</ol>

@@ -10,9 +10,26 @@ function getter(inp_obj = {}, steps = [], otherwise = undefined) {
 	return obj;
 }
 
-const t = { "name": { "type": { "gender": "hrishabh" } } }
+const data = require('./src/components/API_data.json');
 
-console.log(getter(t, ["name", "type", "gendr"], "nothing"));
-console.log(getter(undefined, ["name", "type", "gender"], "nothing"));
-console.log(getter(t, ["name", "type", "gender"], "nothing"));
-console.log(getter(t, [], "nothing"));
+function format(data){
+	try {
+		return JSON.parse( data )
+	} catch (_) {
+		return {}
+	}
+}
+
+const formated_data = data.item.map(item => {
+	return {
+		"name": item.name,
+		"url": item.request.url.raw,
+		"method": item.request.method,
+		"description": `sample description for ${item.name}`,
+		"req_body": getter(item, ["request", "body", "raw"], "{}"),
+		"resp_body": {}
+	}
+
+})
+
+console.log(formated_data);

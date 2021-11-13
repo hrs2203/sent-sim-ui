@@ -8,6 +8,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 
 import store from "./model"
+import APIDocs from "./components/APIDocs";
 
 function RouteHandeller() {
 	return (
@@ -18,6 +19,7 @@ function RouteHandeller() {
 				<Route path="/register" element={<RegisterPage />} />
 				<Route path="/user" element={<UserDetailPage />} />
 				<Route path="/ComparisionPage" element={<ComparePage />} />
+				<Route path="/doc" element={<APIDocs />} />
 				<Route path="*" element={<div>404 Nothing found :| </div>} />
 			</Routes>
 		</BrowserRouter>

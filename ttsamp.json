@@ -1,0 +1,333 @@
+[
+  {
+    "name": "login User",
+    "url": "{{url}}/api/login",
+    "method": "POST",
+    "description": "sample description for {{url}}/api/login",
+    "req_body": {
+      "email": "user2@gmail.com",
+      "password": "hrishabh2"
+    },
+    "resp_body": {
+      "status": 200,
+      "data": {
+        "id": 2,
+        "username": "user2",
+        "email": "user2@gmail.com"
+      }
+    }
+  },
+  {
+    "name": "register new user",
+    "url": "{{url}}/api/register",
+    "method": "POST",
+    "description": "sample description for {{url}}?api/register",
+    "req_body": {
+      "email": "user7@g.com",
+      "username": "user7",
+      "password": "hrishabh7"
+    },
+    "resp_body": {
+      "status": 200,
+      "data": {
+        "id": 8,
+        "username": "user7",
+        "email": "user7@g.com"
+      }
+    }
+  },
+  {
+    "name": "Add_credit_to_user",
+    "url": "{{url}}/api/add_credit/5/890",
+    "method": "GET",
+    "description": "sample description for Add_credit_to_user",
+    "req_body": {},
+    "resp_body": {
+      "status": 200,
+      "data": {
+        "user_bank": {
+          "id": 3,
+          "total_credits": 9240,
+          "saved_query_file": "/home/hrs2203/Desktop/GitHub/sent_sim_django/similarity_backend/user_component/comparision_engine/sent_bert/static_file/user_data_5.json",
+          "user_id": 5
+        }
+      }
+    }
+  },
+  {
+    "name": "get_complete_user_detail",
+    "url": "{{url}}/api/userhistory?pk=5",
+    "method": "GET",
+    "description": "sample description for get_complete_user_detail",
+    "req_body": {},
+    "resp_body": {
+      "status": 200,
+      "data": {
+        "user": {
+          "id": 5,
+          "username": "hrsdubdub",
+          "email": "hrs@g.com"
+        },
+        "user_bank": 9240,
+        "user_history": [
+          {
+            "id": 25,
+            "transaction_charge": 0,
+            "query_count": 0,
+            "credit_added": false,
+            "comp_type": "DB",
+            "user_id": 5
+          },
+          {
+            "id": 26,
+            "transaction_charge": 60,
+            "query_count": 6,
+            "credit_added": false,
+            "comp_type": "CUSTOM",
+            "user_id": 5
+          },
+          {
+            "id": 27,
+            "transaction_charge": 890,
+            "query_count": 89,
+            "credit_added": true,
+            "comp_type": "CUSTOM",
+            "user_id": 5
+          },
+          {
+            "id": 28,
+            "transaction_charge": 60,
+            "query_count": 6,
+            "credit_added": false,
+            "comp_type": "CUSTOM",
+            "user_id": 5
+          },
+          {
+            "id": 29,
+            "transaction_charge": 60,
+            "query_count": 6,
+            "credit_added": false,
+            "comp_type": "CUSTOM",
+            "user_id": 5
+          }
+        ]
+      }
+    }
+  },
+  {
+    "name": "custom_sentence_pair_comparision",
+    "url": "{{url}}/api/compare",
+    "method": "POST",
+    "description": "sample description for custom_sentence_pair_comparision",
+    "req_body": {
+      "sentences1": [
+        "nice day",
+        "hungry dog"
+      ],
+      "sentences2": [
+        "great weather",
+        "good exam",
+        "hungry lion"
+      ],
+      "user_id": 5
+    },
+    "resp_body": {
+      "status": 200,
+      "data": [
+        [
+          0.6459425687789917,
+          0.28213298320770264,
+          0.1478300541639328
+        ],
+        [
+          0.08693088591098785,
+          0.09817323088645935,
+          0.6480898261070251
+        ]
+      ]
+    }
+  },
+  {
+    "name": "save_sentences_for_user",
+    "url": "{{url}}/api/user_saved_data",
+    "method": "POST",
+    "description": "sample description for save_sentences_for_user",
+    "req_body": {
+      "pk": 10,
+      "user_data": [
+        [
+          "lots of homework",
+          "x"
+        ],
+        [
+          "nice tv show",
+          "y"
+        ],
+        [
+          "new country",
+          "c"
+        ]
+      ]
+    },
+    "resp_body": {
+      "status": 200,
+      "data": {
+        "user_id": 10,
+        "body": [
+          [
+            "lots of homework",
+            "x"
+          ],
+          [
+            "nice tv show",
+            "y"
+          ],
+          [
+            "new country",
+            "c"
+          ]
+        ]
+      }
+    }
+  },
+  {
+    "name": "get_user_saved_sentences",
+    "url": "{{url}}/api/user_saved_data?pk=5",
+    "method": "GET",
+    "description": "sample description for get_user_saved_sentences",
+    "req_body": {},
+    "resp_body": {
+      "status": 200,
+      "data": {
+        "user_id": 5,
+        "body": [
+          [
+            "lots of homework",
+            "x"
+          ],
+          [
+            "nice tv show",
+            "y"
+          ],
+          [
+            "new country",
+            "c"
+          ],
+          [
+            "people of earth",
+            "citizens +"
+          ]
+        ]
+      }
+    }
+  },
+  {
+    "name": "compare_with_user_data",
+    "url": "{{url}}/api/user_compare",
+    "method": "POST",
+    "description": "sample description for compare_with_user_data",
+    "req_body": {
+      "pk": 5,
+      "new_sentences": [
+        "people of earth are nice",
+        "people of earth are not nice",
+        "fruite are nice to eat"
+      ]
+    },
+    "resp_body": {
+      "status": 200,
+      "data": {
+        "people of earth are nice": [
+          [
+            "people of earth",
+            "citizens +",
+            0.74046391248703
+          ],
+          [
+            "nice tv show",
+            "y",
+            0.3266265392303467
+          ],
+          [
+            "new country",
+            "c",
+            0.23080787062644958
+          ],
+          [
+            "lots of homework",
+            "x",
+            0.0901661217212677
+          ]
+        ],
+        "people of earth are not nice": [
+          [
+            "people of earth",
+            "citizens +",
+            0.7121473550796509
+          ],
+          [
+            "new country",
+            "c",
+            0.19070664048194885
+          ],
+          [
+            "nice tv show",
+            "y",
+            0.17643451690673828
+          ],
+          [
+            "lots of homework",
+            "x",
+            0.1093517541885376
+          ]
+        ],
+        "fruite are nice to eat": [
+          [
+            "nice tv show",
+            "y",
+            0.18118932843208313
+          ],
+          [
+            "lots of homework",
+            "x",
+            0.056697241961956024
+          ],
+          [
+            "new country",
+            "c",
+            0.027278944849967957
+          ],
+          [
+            "people of earth",
+            "citizens +",
+            0.02046862058341503
+          ]
+        ]
+      }
+    }
+  },
+  {
+    "name": "sentences_user_in_history_id",
+    "url": "{{url}}/api/history_sentences?hid=26",
+    "method": "GET",
+    "description": "sample description for sentences_user_in_history_id",
+    "req_body": {},
+    "resp_body": {
+      "status": 200,
+      "data": [
+        {
+          "id": 12,
+          "sentence": "nice day",
+          "user_id": 5,
+          "history_id": 26
+        },
+        {
+          "id": 13,
+          "sentence": "hungry dog",
+          "user_id": 5,
+          "history_id": 26
+        }
+      ]
+    }
+  }
+]

@@ -20,43 +20,49 @@ function SentenceInserter({ sentences, set_sentencs, sid, uid }) {
 				{
 					sentences.map((item, indx) => {
 						return (
-							<div id={`${sid}_${indx}`} className="low_border h-10 my-2">
+							<div id={`${sid}_${indx}`} className="flex low_border h-10 my-2 w-100">
 								<input type={"text"} value={item}
+									className="m-1 mx-3 px-1 w-100"
 									onChange={(e) => {
 										var l = [...sentences];
 										l[indx] = e.target.value
 										set_sentencs(l);
 									}} />
-								<button onClick={() => {
-									var l = [];
-									for (var i = 0; i < sentences.length; i++) {
-										if (i !== indx) { l.push(sentences[i]); }
-									}
-									set_sentencs(l);
-								}}>Delete</button>
+								<button
+									className="bg-red-500 text-white px-5 m-1 mx-3 rounded"
+									onClick={() => {
+										var l = [];
+										for (var i = 0; i < sentences.length; i++) {
+											if (i !== indx) { l.push(sentences[i]); }
+										}
+										set_sentencs(l);
+									}}>Delete</button>
 							</div>
 						)
 					})
 				}
 			</div>
-			<button className="my-3" onClick={() => { set_sentencs([...sentences, ""]) }}>Add New Sentence</button>
-			<br />
-			<button className="my-3" onClick={_loadUserData}>Load User Data</button>
+			<div className="flex w-100 mt-5 justify-between">
+				<button className="bg-success text-white rounded px-3"
+					onClick={() => { set_sentencs([...sentences, ""]) }}>Add New Sentence</button>
+				<button className="bg-success text-white rounded px-3"
+					onClick={_loadUserData}>Load User Data</button>
+				<input className="px-3" type="file" id={`${sid}_file`}
+					onChange={async (e) => {
+						const file_up = e.target.files[0];
+						console.log(file_up);
+						if (file_up.type === "application/json") {
+							const c = await file_up.text()
+							const content = JSON.parse(c);
+							set_sentencs([...sentences, ...content.sentences])
+						} else {
+							alert("invalid file type. Only json allowed. Please read the format.")
+						}
+						e.target.value = ""
+					}}
+				/>
+			</div>
 
-			<input className="w-100" type="file" id={`${sid}_file`}
-				onChange={async (e) => {
-					const file_up = e.target.files[0];
-					console.log(file_up);
-					if (file_up.type === "application/json") {
-						const c = await file_up.text()
-						const content = JSON.parse(c);
-						set_sentencs([...sentences, ...content.sentences])
-					} else {
-						alert("invalid file type. Only json allowed. Please read the format.")
-					}
-					e.target.value = ""
-				}}
-			/>
 		</div>
 	)
 }
@@ -102,7 +108,7 @@ export default function ComparePage() {
 					onClick={_compareCustomSentences}
 				>Compare</button>
 			</div>
-			<div className="flex px-24 py-4 justify-around overflow-x-auto">
+			<div className="flex px-24 py-4 justify-center overflow-x-auto">
 				{
 					Object.keys(compare_data).length > 0 ? (
 						<div className="low_border w-100 px-4 py-2">

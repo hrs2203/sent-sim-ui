@@ -1,20 +1,28 @@
 {
   "sentences": [
     [
-      "lots of homework",
+      "how to login in to my account",
       "x"
     ],
     [
-      "nice tv show",
+      "how to reset my account details",
       "y"
     ],
     [
-      "new country",
-      "c"
+      "how to transfer money to my friend",
+      "z"
     ],
     [
-      "people of earth",
-      "citizens +"
-    ]
+      "how to view my friend list",
+      "a"
+    ],
+    [
+      "how to delete my account details",
+      "b"
+    ],
+    [
+      "find a new friend on this website",
+      "c"
+    ] 
   ]
 }

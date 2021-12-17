@@ -1,6 +1,8 @@
 import Header from "./Header";
 import book from './book.jpg'
 import lib from './library.jpeg'
+import { Link } from "react-router-dom"
+
 
 export default function HomePage() {
 	return (
@@ -37,7 +39,7 @@ export default function HomePage() {
 				<hr />
 				<div className="flex justify-center pt-3">
 					<p className="px-2">Linkedin</p>
-					<p className="px-2">Github</p>
+					<Link to="/doc"><p className="px-2">Github</p></Link>
 					<p className="px-2">Twitter</p>
 				</div>
 

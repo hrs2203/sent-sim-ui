@@ -15,12 +15,12 @@ function PostElement({ url, heading, descripition, req_body, resp_body }) {
 			<div className="p-2 mt-2 border_light bg-gray-50">
 				<pre>Request Body</pre>
 				<hr />
-				<pre className="mt-2">{JSON.stringify(req_body)}</pre>
+				<pre className="mt-2">{JSON.stringify(req_body, undefined, " ")}</pre>
 			</div>
 			<div className="p-2 mt-2 border_light bg-gray-50">
 				<pre>Response Body</pre>
 				<hr />
-				<pre className="mt-2">{JSON.stringify(resp_body)}</pre>
+				<pre className="mt-2">{JSON.stringify(resp_body, undefined, " ")}</pre>
 			</div>
 		</div>
 	)
@@ -40,7 +40,7 @@ function GetElement({ url, heading, descripition, resp_body }) {
 			<div className="p-2 mt-2 border_light bg-gray-50">
 				<pre>Response Body</pre>
 				<hr />
-				<pre className="mt-2">{JSON.stringify(resp_body)}</pre>
+				<pre className="mt-2">{JSON.stringify(resp_body, undefined, " ")}</pre>
 			</div>
 		</div>
 	)
